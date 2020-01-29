@@ -293,13 +293,14 @@ function counterMaker() {
 */
 function counterMakerWithLimit(limit) {
   let count = 0;
-  return function counter() {
-    if(count < limit) {
+  function counter() {
+    if (count <= limit) {
       return count++;
-    } else(count >= limit) {
-      return count = 0;
-    };
+    } else if (count > limit) {
+      count = 0;
+    }
   };
+  return counter;
 }
 
 /////////////// END OF CHALLENGE ///////////////
